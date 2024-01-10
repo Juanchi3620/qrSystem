@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "urls",
+  "info": {
+    "singularName": "url",
+    "pluralName": "urls",
+    "displayName": "Url"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true
+    },
+
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "required": true
+    },
+    "urlRedirect": {
+      "type": "string",
+      "required": true
+    },
+    "qrImage": {
+      "type": "media",
+      "allowedTypes": [
+        "images"
+      ],
+      "required": true,
+      "multiple": true
+    }
+  }
+}
