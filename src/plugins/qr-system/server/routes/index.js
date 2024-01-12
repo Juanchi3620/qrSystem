@@ -20,6 +20,16 @@ module.exports = [
   },
 
   {
+    method: 'GET',
+    path: '/find/:id',
+    handler: 'url.findOne',
+    config: {
+      policies: [],
+      auth: false,
+    },
+  },
+
+  {
     method: "POST",
     path: "/create",
     handler: "url.create",

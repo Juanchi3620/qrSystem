@@ -9,6 +9,14 @@ module.exports = ({ strapi }) => ({
         }
       },
 
+      async findOne(ctx) {
+        try {
+          return await strapi.plugin('qr-system').service('url').findOne(ctx.params.id);
+        } catch (err) {
+          ctx.throw(500, err);
+        }
+      },
+
       async delete(ctx) {
         try {
           ctx.body = await strapi
