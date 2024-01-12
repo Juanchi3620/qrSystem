@@ -1,20 +1,38 @@
+// @ts-nocheck
 /*
  *
  * HomePage
  *
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 // import PropTypes from 'prop-types';
-import pluginId from '../../pluginId';
+import FormFields from '../../components/form/formFields';
+import {
+  BaseHeaderLayout, 
+  ContentLayout, 
+  Layout,
+} from '@strapi/design-system';
+
+
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>{pluginId}&apos;s HomePage</h1>
-      <p>Hola mundo👌</p>
-    </div>
+    <Layout>
+      <BaseHeaderLayout
+        title="Plugin"
+        subtitle="Generar QR"
+        as="h2"
+      />
+      <ContentLayout>
+        <FormFields/>
+      </ContentLayout>
+      
+    </Layout>
+     
   );
 };
+
+
 
 export default HomePage;
