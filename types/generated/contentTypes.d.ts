@@ -595,7 +595,7 @@ export interface PluginQrSystemUrl extends Schema.CollectionType {
   attributes: {
     slug: Attribute.String & Attribute.Required;
     urlRedirect: Attribute.String & Attribute.Required;
-    qrImage: Attribute.Media & Attribute.Required;
+    qrImage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

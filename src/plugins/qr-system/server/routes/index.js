@@ -35,6 +35,7 @@ module.exports = [
     handler: "url.create",
     config: {
       policies: [],
+      auth: false,
     },
   },
 
