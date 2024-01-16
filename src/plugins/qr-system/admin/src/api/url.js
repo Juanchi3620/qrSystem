@@ -15,23 +15,9 @@ const urlRequests = {
       .then((data) => console.log(data));
   },
 
-  addImage: async (data) => {
-    console.log("Entré a la función addImage");
-    const file = await blobFrom(`${data.imageQr}`, 'image/png');
-    const form = new FormData();
-
-    form.append('files', file, `${data.imageQr}`);
-
-    console.log("Entré a la función addImage");
-
-    return await fetch('http://localhost:1337/api/upload', {
-      method: 'post',
-      body: JSON.stringify(form),
-    });
-  },
-
   addUrl: async (data) => {
     console.log("data", data);
+    
     return await fetch("http://localhost:1337/qr-system/create", {
       method: "POST",
       headers: {
@@ -41,7 +27,7 @@ const urlRequests = {
         data: {
           slug: data.slug,
           urlRedirect: data.urlRedirect,
-          imageQr: data.imageQr,
+          qrImage: data.qrImage,
         },
       }),
     })

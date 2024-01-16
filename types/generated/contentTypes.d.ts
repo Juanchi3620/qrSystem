@@ -579,10 +579,10 @@ export interface PluginQrSystemUrl extends Schema.CollectionType {
     singularName: 'url';
     pluralName: 'urls';
     displayName: 'Url';
+    description: '';
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   pluginOptions: {
     'content-manager': {
@@ -593,9 +593,9 @@ export interface PluginQrSystemUrl extends Schema.CollectionType {
     };
   };
   attributes: {
-    slug: Attribute.String & Attribute.Required;
-    urlRedirect: Attribute.String & Attribute.Required;
-    qrImage: Attribute.Media;
+    slug: Attribute.Text;
+    urlRedirect: Attribute.Text;
+    qrImage: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

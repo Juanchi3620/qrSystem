@@ -34,12 +34,6 @@ const HomePage = () => {
     await fecthData();
   }
 
-  async function addImage(data) {
-    console.log("Estoy en addImage del Homepage", data);
-    await urlRequests.addImage(data);
-    await fecthData();
-  }
-
   if (isLoading) {
     return <LoadingIndicatorPage />;
   }
@@ -47,7 +41,7 @@ const HomePage = () => {
     <Layout>
       <BaseHeaderLayout title="Plugin" subtitle="Generar QR" as="h2" />
       <ContentLayout>
-        <FormFields addUrl={addUrl} addImage={addImage}/>
+        <FormFields addUrl={addUrl}/>
       </ContentLayout>
     </Layout>
   );

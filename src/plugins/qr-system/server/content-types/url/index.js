@@ -1,5 +1,5 @@
-const schema = require("./schema");
+const schema = require('./schema');
 
 module.exports = {
-  schema,
-};
+    schema,
+}

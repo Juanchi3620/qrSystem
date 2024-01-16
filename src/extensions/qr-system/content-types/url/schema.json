@@ -4,18 +4,26 @@
   "info": {
     "singularName": "url",
     "pluralName": "urls",
-    "displayName": "Url"
+    "displayName": "Url",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": false,
-    "comment": ""
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
   },
   "attributes": {
     "slug": {
-      "type": "string"
+      "type": "text"
     },
     "urlRedirect": {
-      "type": "string"
+      "type": "text"
     },
     "qrImage": {
       "type": "text"
