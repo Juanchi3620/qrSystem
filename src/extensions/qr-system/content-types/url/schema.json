@@ -20,10 +20,12 @@
   },
   "attributes": {
     "slug": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "urlRedirect": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "qrImage": {
       "type": "text"

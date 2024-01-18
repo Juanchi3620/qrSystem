@@ -18,6 +18,7 @@ import { Trash, Information } from '@strapi/icons';
 
 export default function UrlTable({urlData, deleteUrl}){
     var longi = urlData.length;
+    var urlComplete = "";
     console.log("longi", longi);
     console.log("props", urlData);
     
@@ -73,7 +74,8 @@ export default function UrlTable({urlData, deleteUrl}){
                             <Typography textColor="neutral800">{data.urlRedirect}</Typography>
                         </Td>
                         <Td>
-                            <Typography textColor="neutral800">{data.slug}</Typography>
+                            <a href={data.urlRedirect+"/"+data.slug} target="_blank">{data.slug}</a>
+                            {/* <Typography textColor="neutral800">{data.slug}</Typography> */}
                         </Td>
                         <Td>
                             <a href={data.qrImage} target="_blank">Clic</a>

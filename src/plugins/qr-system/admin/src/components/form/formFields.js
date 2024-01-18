@@ -5,8 +5,8 @@ import QRCode from "react-qr-code";
 import * as html2image from 'html-to-image';
 
 export default function FormFields({addUrl}){
-    const [url, setUrl] = useState('');
-    const [slug, setSlug] = useState('');
+    const [url, setUrl] = useState();
+    const [slug, setSlug] = useState();
     const [QR, setQR] = useState('');
     const [showQr, setShowQR] = useState(false);
 
@@ -41,11 +41,7 @@ export default function FormFields({addUrl}){
                 
             } catch (e) {
                 console.log("error", e);
-            }   
-            const link = document.createElement("a");
-            link.href = dataUrl;
-            link.download = "qr-code.png";
-            link.click();       
+            }          
         })
         .catch(function (error) {
           console.error('Error al convertir a imagen:', error);
@@ -68,6 +64,7 @@ export default function FormFields({addUrl}){
                     placeholder="Enter the URL" 
                     label="Url" 
                     name="url" 
+                    required
                     onChange={e => {setUrl(e.target.value);}} 
                     value={url} 
                 />
@@ -77,9 +74,10 @@ export default function FormFields({addUrl}){
                     // @ts-ignore
                     placeholder="Enter the Slug" 
                     label="Slug"
-                    name="slug" 
+                    name="slug"
+                    required 
                     onChange={e => {setSlug(e.target.value);}}
-                    value={slug} 
+                    value={slug}
                 />
                 <br />
                 <Button type="submit">Save</Button>

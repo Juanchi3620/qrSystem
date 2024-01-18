@@ -12,15 +12,14 @@
   },
   "attributes": {
     "slug": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "urlRedirect": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "qrImage": {
-      "type": "text"
-    },
-    "textoLoco": {
       "type": "text"
     }
 
