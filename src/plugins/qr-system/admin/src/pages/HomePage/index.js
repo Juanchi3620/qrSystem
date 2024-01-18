@@ -8,7 +8,8 @@
 import React, { useEffect, useState } from "react";
 // import PropTypes from 'prop-types';
 import FormFields from "../../components/form/formFields";
-import { BaseHeaderLayout, ContentLayout, Layout } from "@strapi/design-system";
+import UrlTable from "../../components/UrlTable";
+import { BaseHeaderLayout, ContentLayout, Layout, Box } from "@strapi/design-system";
 
 import { LoadingIndicatorPage } from "@strapi/helper-plugin";
 
@@ -34,15 +35,25 @@ const HomePage = () => {
     await fecthData();
   }
 
+  async function deleteUrl(data) {
+    await urlRequests.deleteUrl(data.id);
+    await fecthData();    
+  }
+
   if (isLoading) {
     return <LoadingIndicatorPage />;
   }
   return (
     <Layout>
-      <BaseHeaderLayout title="Plugin" subtitle="Generar QR" as="h2" />
-      <ContentLayout>
-        <FormFields addUrl={addUrl}/>
-      </ContentLayout>
+      <Box padding={8} background="neutral100">
+        <BaseHeaderLayout title="Plugin" subtitle="Generar QR" as="h2" />
+        <ContentLayout>
+          <FormFields addUrl={addUrl}/>
+          <br/>
+          <br/>
+          <UrlTable urlData={urlData} deleteUrl={deleteUrl}/>
+        </ContentLayout>
+      </Box>
     </Layout>
   );
 };

@@ -4,7 +4,7 @@ import { TextInput, Button, Box } from '@strapi/design-system';
 import QRCode from "react-qr-code";
 import * as html2image from 'html-to-image';
 
-export default function FormFields({addUrl}, {addImage}){
+export default function FormFields({addUrl}){
     const [url, setUrl] = useState('');
     const [slug, setSlug] = useState('');
     const [QR, setQR] = useState('');
@@ -50,6 +50,7 @@ export default function FormFields({addUrl}, {addImage}){
         .catch(function (error) {
           console.error('Error al convertir a imagen:', error);
         });
+        
 
     };
     
@@ -60,7 +61,7 @@ export default function FormFields({addUrl}, {addImage}){
                     {showQr && <QRCode value={QR}/>}
                 </Box>
             </Box>
-            
+            <br />
             <form onSubmit={handleSubmit}>
                 <TextInput
                     // @ts-ignore
@@ -70,6 +71,7 @@ export default function FormFields({addUrl}, {addImage}){
                     onChange={e => {setUrl(e.target.value);}} 
                     value={url} 
                 />
+                <br />
 
                 <TextInput
                     // @ts-ignore
@@ -79,6 +81,7 @@ export default function FormFields({addUrl}, {addImage}){
                     onChange={e => {setSlug(e.target.value);}}
                     value={slug} 
                 />
+                <br />
                 <Button type="submit">Save</Button>
             </form>
         </div>

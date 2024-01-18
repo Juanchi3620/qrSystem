@@ -3,7 +3,7 @@ import { FormData } from 'formdata-node';
 import fetch, { blobFrom } from 'node-fetch';
 
 const urlRequests = {
-  getAllUrls: async () => {
+  /* getAllUrls: async () => {
     console.log("Entre aqui");
     return await fetch("http://localhost:1337/qr-system/find", {
       method: "GET",
@@ -13,6 +13,12 @@ const urlRequests = {
     })
       .then((response) => response.json())
       .then((data) => console.log(data));
+  }, */
+
+  getAllUrls: async () => {
+    return await request('/qr-system/find', {
+        method: "GET",
+    });
   },
 
   addUrl: async (data) => {
