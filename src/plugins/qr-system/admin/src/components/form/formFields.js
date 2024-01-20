@@ -5,8 +5,8 @@ import QRCode from "react-qr-code";
 import * as html2image from 'html-to-image';
 
 export default function FormFields({addUrl}){
-    const [url, setUrl] = useState();
-    const [slug, setSlug] = useState();
+    const [url, setUrl] = useState('');
+    const [slug, setSlug] = useState('');
     const [QR, setQR] = useState('');
     const [showQr, setShowQR] = useState(false);
 
@@ -21,33 +21,36 @@ export default function FormFields({addUrl}){
         generateQR();
         setShowQR(true);
         let image="";
-
-        // Convierte el QR a imagen
-        const qrImage = document.getElementById('qrImage');
-        html2image.toPng(qrImage)
-        .then(async function (dataUrl) {
-          // Almacena la imagen en la variable
-            console.log("dataUrl", dataUrl);
-            image = image + dataUrl;
-            console.log("dataUrl.valueOf", typeof dataUrl);
-            console.log("image", image);
-            try {
-                await addUrl({ 
-                    slug: slug,
-                    urlRedirect: url,
-                    qrImage: image,
-                });
-                console.log("Estoy en el try despues de addUrl");
-                
-            } catch (e) {
-                console.log("error", e);
-            }          
-        })
-        .catch(function (error) {
-          console.error('Error al convertir a imagen:', error);
-        });
+        if(slug === '' || url === ''){
+            alert("Please fill all the fields");
+            return;
+        }else{
+            // Convierte el QR a imagen
+            const qrImage = document.getElementById('qrImage');
+            html2image.toPng(qrImage)
+            .then(async function (dataUrl) {
+            // Almacena la imagen en la variable
+                console.log("dataUrl", dataUrl);
+                image = image + dataUrl;
+                console.log("dataUrl.valueOf", typeof dataUrl);
+                console.log("image", image);
+                try {
+                    await addUrl({ 
+                        slug: slug,
+                        urlRedirect: url,
+                        qrImage: image,
+                    });
+                    console.log("Estoy en el try despues de addUrl");
+                    
+                } catch (e) {
+                    console.log("error", e);
+                }          
+            })
+            .catch(function (error) {
+            console.error('Error al convertir a imagen:', error);
+            });
+        }
         
-
     };
     
     return( 
