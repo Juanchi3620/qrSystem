@@ -11,7 +11,7 @@ export default function FormFields({addUrl}){
     const [showQr, setShowQR] = useState(false);
 
     const generateQR =() =>{
-        const urlComplete = url+"/"+slug;
+        const urlComplete = "http://localhost:1337/qr-system/find/"+slug;
         setQR(urlComplete);
     };
 
@@ -34,6 +34,10 @@ export default function FormFields({addUrl}){
                 image = image + dataUrl;
                 console.log("dataUrl.valueOf", typeof dataUrl);
                 console.log("image", image);
+                const link = document.createElement("a");
+                link.href = dataUrl;
+                link.download = "qr-code.png";
+                link.click();
                 try {
                     await addUrl({ 
                         slug: slug,
@@ -44,7 +48,8 @@ export default function FormFields({addUrl}){
                     
                 } catch (e) {
                     console.log("error", e);
-                }          
+                }
+                          
             })
             .catch(function (error) {
             console.error('Error al convertir a imagen:', error);
@@ -65,7 +70,7 @@ export default function FormFields({addUrl}){
                 <TextInput
                     // @ts-ignore
                     placeholder="Enter the URL" 
-                    label="Url" 
+                    label="To:" 
                     name="url" 
                     required
                     onChange={e => {setUrl(e.target.value);}} 
@@ -76,7 +81,7 @@ export default function FormFields({addUrl}){
                 <TextInput
                     // @ts-ignore
                     placeholder="Enter the Slug" 
-                    label="Slug"
+                    label="http://localhost:1337/qr-system/find/..."
                     name="slug"
                     required 
                     onChange={e => {setSlug(e.target.value);}}

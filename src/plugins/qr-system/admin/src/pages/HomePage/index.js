@@ -40,6 +40,11 @@ const HomePage = () => {
     await fecthData();    
   }
 
+  async function editUrl(id, data) {
+    await urlRequests.editUrl(id, data);
+    await fecthData();    
+  }
+
   if (isLoading) {
     return <LoadingIndicatorPage />;
   }
@@ -51,7 +56,7 @@ const HomePage = () => {
           <FormFields addUrl={addUrl}/>
           <br/>
           <br/>
-          <UrlTable urlData={urlData} deleteUrl={deleteUrl}/>
+          <UrlTable urlData={urlData} deleteUrl={deleteUrl} editUrl={editUrl}/>
         </ContentLayout>
       </Box>
     </Layout>

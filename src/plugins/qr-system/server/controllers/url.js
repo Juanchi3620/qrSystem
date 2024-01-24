@@ -9,6 +9,15 @@ module.exports = ({ strapi }) => ({
         }
       },
 
+      async findBySlug(ctx) {
+         try {
+          console.log("Estoy dentro de la url CTX:", ctx.params);
+          return await strapi.plugin('qr-system').service('url').findBySlug(ctx.params, ctx);
+        } catch (err) {
+          ctx.throw(500, err);
+        }
+      },
+
       async findOne(ctx) {
         try {
           return await strapi.plugin('qr-system').service('url').findOne(ctx.params.id);

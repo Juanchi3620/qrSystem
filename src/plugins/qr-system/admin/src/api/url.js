@@ -41,7 +41,7 @@ const urlRequests = {
       .then((data) => console.log(data));
   },
 
-  editUrl: async (id, data) => {
+  /* editUrl: async (id, data) => {
     return await fetch(`http://localhost:1337/qr-system/update/${id}`, {
       method: "PUT",
       headers: {
@@ -59,6 +59,14 @@ const urlRequests = {
       .then((data) => {
         console.log(data);
       });
+  }, */
+
+  editUrl: async (id, data) => {
+    console.log("editar");
+    return await request(`/qr-system/update/${id}`, {
+      method: "PUT",
+      body: { data: data },
+    });
   },
 
   deleteUrl: async (id) => {

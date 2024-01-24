@@ -21,13 +21,23 @@ module.exports = [
 
   {
     method: 'GET',
+    path: '/find/:slug',
+    handler: 'url.findBySlug',
+    config: {
+      policies: [],
+      auth: false,
+    },
+  },
+
+/*   {
+    method: 'GET',
     path: '/find/:id',
     handler: 'url.findOne',
     config: {
       policies: [],
       auth: false,
     },
-  },
+  }, */
 
   {
     method: "POST",
@@ -45,6 +55,7 @@ module.exports = [
     handler: "url.delete",
     config: {
       policies: [],
+      auth: false,
     },
   },
 
@@ -54,6 +65,7 @@ module.exports = [
     handler: "url.update",
     config: {
       policies: [],
+      auth: false,
     },
   },
 ];
